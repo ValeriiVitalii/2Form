@@ -8,11 +8,19 @@ public class Storage
 
     private Dictionary<int, Dp> _dps = new Dictionary<int, Dp>();
 
+    private Dictionary<int, Status> _statuses = new Dictionary<int, Status>();
+    
+    private Dictionary<int, Task> _tasks = new Dictionary<int, Task>();
+
     private int _userId = 1;
     
     private int _categoryId = 1;
     
     private int _dpId = 1;
+
+    private int _statusId = 1;
+    
+    private int _taskId = 1;
 
 
     public int addUser(User user)
@@ -44,8 +52,8 @@ public class Storage
 
     public int addDp(Dp dp)
     {
-        _dps.Add(dp.Id, dp);
-        return dp.Id;
+        _dps.Add(_dpId, dp);
+        return _dpId++;
     }
 
     public Dp getDp(int dpId)

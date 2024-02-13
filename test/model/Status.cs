@@ -1,9 +1,8 @@
 namespace test;
 
-public class User(String name, String login, String password)
+public class Status(string name, bool isTerminal)
 {
     private int _id;
-    private String _password = password;
 
     public int Id
     {
@@ -17,9 +16,9 @@ public class User(String name, String login, String password)
         set => name = value ?? throw new ArgumentNullException(nameof(value));
     }
 
-    public string Login
+    public bool IsTerminal
     {
-        get => login;
-        set => login = value ?? throw new ArgumentNullException(nameof(value));
+        get => isTerminal;
+        set => isTerminal = value;
     }
 }

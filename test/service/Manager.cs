@@ -1,4 +1,5 @@
-using System.ComponentModel.DataAnnotations;
+/*using System.ComponentModel.DataAnnotations;
+using test.utilityStaticClass;
 
 namespace test;
 
@@ -7,7 +8,7 @@ public class Manager
     private Storage _storage = new Storage();
 
 
-    public int AddUser(String name, String login, String password)
+    public int addUser(String name, String login, String password)
     {
         var user = new User(name, login, password);
 
@@ -35,7 +36,7 @@ public class Manager
 
     public void addDp(TypeDp typeDp, String name, object value)
     {
-        typeValidate(typeDp, value);
+        Validate.typeValidate(typeDp, value);
         
         if (typeDp == TypeDp.text)
         {
@@ -65,30 +66,4 @@ public class Manager
         _storage.removeDp(dpId);
         return dpId;
     }
-
-    private void typeValidate(TypeDp type, object value)
-    {
-        if (type == TypeDp.text)
-        {
-            if (value is not String)
-            {
-                throw new ValidationException("В текстовом дп доступен только текст");
-            }
-        }
-        if (type == TypeDp.numeric)
-        {
-            if (value is not Int32)
-            {
-                throw new ValidationException(
-                    "В числовом дп доступны только числа от -2 147 483 648 до 2 147 483 647");
-            }
-        }
-        if (type == TypeDp.file)
-        {
-            if (value is not String || !Convert.ToString(value).Contains(".txt")) // ПРОВЕРИТЬ РАБОТАЕТ ЛИ
-            {
-                throw new ValidationException("В файловом дп доступны только файлы с расширением .txt");
-            }
-        }
-    }
-}
+}*/

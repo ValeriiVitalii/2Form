@@ -1,16 +1,11 @@
 namespace test;
 
-public class Category
+public class Category(String name, List<Dp> dps, Dictionary<Status, List<int>> transitions)
 {
     private int _id;
-    private String _name;
-    private List<Dp> _dps;
-
-    public Category(int id, String name, List<Dp> dps)
-    {
-        _name = name;
-        _dps = dps;
-    }
+    private String _name = name;
+    private List<Dp> _dps = dps;
+    private Dictionary<Status, List<int>> _transitions = transitions; //Ключ - статус, вэлью - id статусов доступных для перехода
 
     public int Id
     {
@@ -28,5 +23,18 @@ public class Category
     {
         get => _dps;
         set => _dps = value ?? throw new ArgumentNullException(nameof(value));
+    }
+
+    public void addStatus(Status status, List<int> ids)
+    {
+        _transitions.Add(status, ids);  //Не сделал в дефолтном сеттере ибо тогда нужно будет подавать в метод мапу         
+    }
+    
+    public void addTransitions(Status status, List<int> ids)
+    {
+        foreach (var id in ids)
+        {
+            _transitions[status].Add(id);
+        }
     }
 }
