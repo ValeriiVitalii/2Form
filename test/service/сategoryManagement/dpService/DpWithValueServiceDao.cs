@@ -6,17 +6,20 @@ public class DpWithValueServiceDao : IDpWithValueService
 {
     private Storage _storage = new Storage();
     
-    public void addDpWithValue(TypeDp typeDp, String name, object value, int taskId)
+    public void addDpWithValueAfterAddTask(IEnumerable<DpWithoutValue> dps, int taskId)
     {
-        Validate.typeValidate(typeDp, value);
-        
-        DpWithValue dp = new DpWithValue(typeDp, name, value, taskId);
-        _storage.addDpWithValue(dp);
+        _storage.addDpWithValueAfterAddTask(dps, taskId);
     }
 
-    public DpWithoutValue getDpWithValue(int dpId)
+    public void editValue(int dpId, object value)
     {
-        return _storage.getDp(dpId);
+        Validate.typeValidate(getDpWithValue(dpId).Type, value);
+        _storage.editDpValue(dpId, value);
+    }
+
+    public DpWithValue getDpWithValue(int dpId)
+    {
+        return _storage.getDpWithValue(dpId);
     }
 
     public int removeDpWithValue(int dpId)

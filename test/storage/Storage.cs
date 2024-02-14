@@ -1,3 +1,6 @@
+using System.Collections;
+using test.utilityStaticClass;
+
 namespace test;
 
 public class Storage
@@ -45,6 +48,7 @@ public class Storage
     
     public int addCategory(Category category)
     {
+        category.Id = _categoryId;
         _categories.Add(_categoryId, category);
         return _categoryId++;
     }
@@ -58,19 +62,42 @@ public class Storage
 
     public int addDpWithoutValue(DpWithoutValue dpWithoutValue)
     {
+        dpWithoutValue.Id = _dpWithoutValueId;
         _dpsWithoutValue.Add(_dpWithoutValueId, dpWithoutValue);
         return _dpWithoutValueId++;
     }
 
-    public DpWithoutValue getDp(int dpId)
+    public DpWithoutValue getDpWithoutValue(int dpId)
     {
         return _dpsWithoutValue[dpId];
     }
     
+    public List<DpWithoutValue> getDpsWithoutValue()
+    {
+        return _dpsWithoutValue.Values.ToList();
+    }
+    
+    public DpWithValue getDpWithValue(int dpId)
+    {
+        return _dpsWithValue[dpId];
+    }
+    
     public int addDpWithValue(DpWithValue dpWithValue)
     {
+        dpWithValue.Id = _dpWithValueId; 
         _dpsWithValue.Add(_dpWithValueId, dpWithValue);
         return _dpWithValueId++;
+    }
+    
+    public void addDpWithValueAfterAddTask(IEnumerable<DpWithoutValue> dps, int taskId)
+    {   //Сделал в storage потому что тут логика заполнения id
+        dps.ToList().ForEach(dp => _dpsWithValue.Add(_dpWithValueId++, Mapper.toDpWithValue(dp, taskId)));
+    }
+
+    public int editDpValue(int dpId, object value)
+    {
+        _dpsWithValue[dpId].Value = value;
+        return dpId;
     }
 
     public int removeDp(int dpId)
@@ -81,8 +108,14 @@ public class Storage
 
     public int addTask(Task task)
     {
+        task.Id = _taskId;
         _tasks.Add(_taskId, task);
-        return _taskId;
+        return _taskId++;
+    }
+    
+    public TaskDto getTask(int taskId)
+    {
+        return Mapper.toTaskDto(_tasks[taskId]);
     }
 
     public int removeTask(int taskId)

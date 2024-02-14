@@ -6,5 +6,7 @@ public interface IDpWithoutValueService
 
     internal void addCatIdInDp(int dpId, List<int> catsId);
 
+    internal IEnumerable<DpWithoutValue> getDpByCatId(int catId);
+
     internal int removeDpWithoutValue(int dpId);
 }

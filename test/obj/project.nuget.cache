@@ -1,8 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "NXkjhnFuJS5YSN3PocjPIWrCxODo7QJDGprUYzLqGMqY0g9oAqvQTqt3nj1ewWhMd/ocVIMuUMYRvsc3YkHocg==",
+  "dgSpecHash": "5HWg9nX61Xt19xTYmHiVQNBTcF9B+YSsQBZyb8gfyN3uG0zMMnq1nibMusVV86/Rm3mC21vc+XijacuFBPCAWQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\GorbatkovVG\\RiderProjects\\2Form\\test\\test.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\GorbatkovVG\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
+    "C:\\Users\\GorbatkovVG\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\GorbatkovVG\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
+    "C:\\Users\\GorbatkovVG\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\GorbatkovVG\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\GorbatkovVG\\.nuget\\packages\\valueinjecter\\3.2.0\\valueinjecter.3.2.0.nupkg.sha512"
+  ],
   "logs": []
 }

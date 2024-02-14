@@ -1,6 +1,6 @@
 namespace test;
 
-public class DpWithoutValue(Enum type, String name)
+public class DpWithoutValue(TypeDp type, String name)
 {
     private int _id;
 
@@ -22,16 +22,22 @@ public class DpWithoutValue(Enum type, String name)
         }
     }
 
+    public List<int> UseCatId
+    {
+        get => _useCatId;
+        set => _useCatId = value ?? throw new ArgumentNullException(nameof(value));
+    }
+
     public int Id
     {
         get => _id;
         set => _id = value;
     }
 
-    public Enum Type
+    public TypeDp Type
     {
         get => type;
-        set => type = value ?? throw new ArgumentNullException(nameof(value));
+        set => type = value;
     }
 
     public string Name
