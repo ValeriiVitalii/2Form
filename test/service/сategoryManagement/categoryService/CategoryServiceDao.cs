@@ -4,10 +4,9 @@ public class CategoryServiceDao : ICategoryService
 {
     private Storage _storage = new Storage();
     
-    public int addCategory(int categoryId, Category category)
+    public int addCategory(Category category)
     {
-        _storage.addCategory(categoryId, category);
-        return categoryId;
+        return _storage.addCategory(category);
     }
 
     public int removeCategory(int categoryId)

@@ -6,17 +6,23 @@ public class Storage
 
     private Dictionary<int, Category> _categories = new Dictionary<int, Category>();
 
-    private Dictionary<int, Dp> _dps = new Dictionary<int, Dp>();
+    private Dictionary<int, DpWithoutValue> _dpsWithoutValue = new Dictionary<int, DpWithoutValue>();
+    
+    private Dictionary<int, DpWithValue> _dpsWithValue = new Dictionary<int, DpWithValue>();
 
     private Dictionary<int, Status> _statuses = new Dictionary<int, Status>();
     
     private Dictionary<int, Task> _tasks = new Dictionary<int, Task>();
+    
+    
 
     private int _userId = 1;
     
     private int _categoryId = 1;
     
-    private int _dpId = 1;
+    private int _dpWithoutValueId = 1;
+    
+    private int _dpWithValueId = 1;
 
     private int _statusId = 1;
     
@@ -37,10 +43,10 @@ public class Storage
     }
 
     
-    public int addCategory(int categoryId, Category category)
+    public int addCategory(Category category)
     {
-        _categories.Add(categoryId, category);
-        return categoryId;
+        _categories.Add(_categoryId, category);
+        return _categoryId++;
     }
 
     public int removeCategory(int categoryId)
@@ -50,20 +56,38 @@ public class Storage
     }
     
 
-    public int addDp(Dp dp)
+    public int addDpWithoutValue(DpWithoutValue dpWithoutValue)
     {
-        _dps.Add(_dpId, dp);
-        return _dpId++;
+        _dpsWithoutValue.Add(_dpWithoutValueId, dpWithoutValue);
+        return _dpWithoutValueId++;
     }
 
-    public Dp getDp(int dpId)
+    public DpWithoutValue getDp(int dpId)
     {
-        return _dps[dpId];
+        return _dpsWithoutValue[dpId];
+    }
+    
+    public int addDpWithValue(DpWithValue dpWithValue)
+    {
+        _dpsWithValue.Add(_dpWithValueId, dpWithValue);
+        return _dpWithValueId++;
     }
 
     public int removeDp(int dpId)
     {
-        _dps.Remove(dpId);
+        _dpsWithoutValue.Remove(dpId);
         return dpId;
+    }
+
+    public int addTask(Task task)
+    {
+        _tasks.Add(_taskId, task);
+        return _taskId;
+    }
+
+    public int removeTask(int taskId)
+    {
+        _tasks.Remove(taskId);
+        return taskId;
     }
 }

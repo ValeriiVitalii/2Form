@@ -1,10 +1,10 @@
 namespace test;
 
-public class Dp(Enum type, String name)
+public class DpWithoutValue(Enum type, String name)
 {
     private int _id;
 
-    private List<int> _useCatId;
+    private List<int> _useCatId = null!;
     // Сделать value
 
     public void AddCatId(List<int> catsId)

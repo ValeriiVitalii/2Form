@@ -1,10 +1,8 @@
 namespace test;
 
-public class Category(String name, List<Dp> dps, Dictionary<Status, List<int>> transitions)
+public class Category(String name, List<DpWithoutValue> dps, Dictionary<Status, List<int>> transitions)
 {
     private int _id;
-    private String _name = name;
-    private List<Dp> _dps = dps;
     private Dictionary<Status, List<int>> _transitions = transitions; //Ключ - статус, вэлью - id статусов доступных для перехода
 
     public int Id
@@ -15,14 +13,14 @@ public class Category(String name, List<Dp> dps, Dictionary<Status, List<int>> t
 
     public string Name
     {
-        get => _name;
-        set => _name = value ?? throw new ArgumentNullException(nameof(value));
+        get => name;
+        set => name = value ?? throw new ArgumentNullException(nameof(value));
     }
 
-    public List<Dp> Dps        //Мб изменить SET
+    public List<DpWithoutValue> Dps        //Мб изменить SET
     {
-        get => _dps;
-        set => _dps = value ?? throw new ArgumentNullException(nameof(value));
+        get => dps;
+        set => dps = value ?? throw new ArgumentNullException(nameof(value));
     }
 
     public void addStatus(Status status, List<int> ids)
