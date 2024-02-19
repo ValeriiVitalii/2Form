@@ -123,4 +123,15 @@ public class Storage
         _tasks.Remove(taskId);
         return taskId;
     }
+
+    public int createStatus(Status status)
+    {
+        _statuses.Add(_statusId, status);
+        return _statusId++;
+    }
+    
+    public Status getStatus(int idStatus)
+    {
+        return _statuses[idStatus];
+    }
 }

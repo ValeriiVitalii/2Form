@@ -9,7 +9,6 @@
 
     <ItemGroup>
       <Folder Include="exception\" />
-      <Folder Include="service\сategoryManagement\" />
     </ItemGroup>
 
     <ItemGroup>

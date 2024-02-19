@@ -27,3 +27,10 @@ C:\Users\GorbatkovVG\RiderProjects\2Form\test\obj\Debug\net8.0\refint\test.dll
 C:\Users\GorbatkovVG\RiderProjects\2Form\test\obj\Debug\net8.0\test.pdb
 C:\Users\GorbatkovVG\RiderProjects\2Form\test\obj\Debug\net8.0\test.genruntimeconfig.cache
 C:\Users\GorbatkovVG\RiderProjects\2Form\test\obj\Debug\net8.0\ref\test.dll
+C:\Users\GorbatkovVG\RiderProjects\2Form\test\bin\Debug\net8.0\AutoMapper.dll
+C:\Users\GorbatkovVG\RiderProjects\2Form\test\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\GorbatkovVG\RiderProjects\2Form\test\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+C:\Users\GorbatkovVG\RiderProjects\2Form\test\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
+C:\Users\GorbatkovVG\RiderProjects\2Form\test\bin\Debug\net8.0\Omu.ValueInjecter.dll
+C:\Users\GorbatkovVG\RiderProjects\2Form\test\obj\Debug\net8.0\test.csproj.AssemblyReference.cache
+C:\Users\GorbatkovVG\RiderProjects\2Form\test\obj\Debug\net8.0\test.csproj.CopyComplete

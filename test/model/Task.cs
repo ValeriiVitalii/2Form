@@ -1,6 +1,6 @@
 namespace test;
 
-public class Task(string name, string description, Status status, int catId)
+public class Task(string name, string description, Status status, int catIdt)
 {
     private int _id;
 

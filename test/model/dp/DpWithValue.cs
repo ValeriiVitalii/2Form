@@ -7,6 +7,8 @@ public class DpWithValue(TypeDp type, String name) : DpWithoutValue(type, name)
     private object _value;
 
     private int _taskId;
+
+    private bool _fill;
     
     public int Id
     {
@@ -24,5 +26,11 @@ public class DpWithValue(TypeDp type, String name) : DpWithoutValue(type, name)
     {
         get => _taskId;
         set => _taskId = value;
+    }
+
+    public bool Fill
+    {
+        get => _fill;
+        set => _fill = value;
     }
 }
