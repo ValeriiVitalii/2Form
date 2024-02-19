@@ -1,0 +1,14 @@
+@model Category
+
+<form id="editCategoryForm">
+    <input type="hidden" name="id" value="@Model.Id" />
+    <div class="form-group">
+        <label for="newName">Новое имя:</label>
+        <input type="text" class="form-control" id="newName" name="newName" value="@Model.Name" />
+    </div>
+    <div class="form-group">
+        <label for="newDescription">Новое описание:</label>
+        <input type="text" class="form-control" id="newDescription" name="newDescription" value="@Model.Description" />
+    </div>
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+</form>
