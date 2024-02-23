@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Components.Sections;
 using NetCore.Models;
 
 namespace test;
@@ -13,11 +14,14 @@ public class Storage
     {
         category.Id = _categoryId;
         _categories.Add(_categoryId, category);
+        
+        Console.WriteLine(_categories.ContainsKey(_categoryId));
         return _categoryId++;
     }
 
     public Category getCategory(int id)
     {
+        Console.WriteLine(_categories.ContainsKey(id));
         return _categories[id];
     }
 

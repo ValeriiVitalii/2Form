@@ -1,10 +1,72 @@
 @{
     ViewData["Title"] = "Home";
 }
-
+<style>
+    .table-hover tbody tr:hover .expand-icon {
+        display: inline-block;
+    }
+    .expand-icon {
+        display: none;
+        cursor: pointer;
+    }
+    .expanded-input {
+        display: none;
+    }
+</style>
 <div class="text-center">
-    <h1 class="display-4">3333333</h1>
-    <p>ds</p>
-    <a asp-controller="Category" asp-action="CreateCategory">Создать категорию</a>
-    <a asp-controller="Category" asp-action="EditCategory">Изменить категорию</a>
+    <h1 class="display-4">Вы можете настроить категорию под себя и создавать в ней задачи</h1>
 </div>
+
+<!-- Модальное окно с категориями -->
+<div id="myModal" style="max-width: 400px; width: 80%; border-radius: 10px; background-color: rgba(255, 255, 255, 0.95); padding: 20px; margin: 20px auto;">
+    <div style="text-align: right;">
+        <span onclick="document.getElementById('myModal').style.display='none'" style="color: #aaaaaa; font-size: 24px; cursor: pointer;">&times;</span>
+    </div>
+    <div style="margin-top: 20px;">
+        <!-- Таблица с названиями всех категорий -->
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Название</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var category in ViewBag.Categories)
+                {
+                    <tr>
+                        <td>@category.Id</td>
+                        <td>
+                            <div>
+                                @category.Name
+                                <span class="expand-icon" onclick="toggleExpandedInput(this)">▶️</span>
+                            </div>
+                            <div class="expanded-input">
+                                <!-- Здесь можно добавить дополнительные элементы, такие как кнопки -->
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Кнопки "Создать категорию" и "Открыть категорию" -->
+<div style="text-align: center; margin-top: 20px;">
+    <a asp-controller="Category" asp-action="CreateCategory" class="btn btn-primary">Создать категорию</a>
+    <button class="btn btn-primary" onclick="document.getElementById('myModal').style.display='block'">Открыть категорию</button>
+</div>
+
+<script>
+    function toggleExpandedInput(element) {
+        var expandedInput = element.nextElementSibling;
+        if (expandedInput) {
+            if (expandedInput.style.display === 'block') {
+                expandedInput.style.display = 'none';
+            } else {
+                expandedInput.style.display = 'block';
+            }
+        }
+    }
+</script>

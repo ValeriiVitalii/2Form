@@ -1,32 +1,38 @@
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using test;
 
-namespace NetCore.Models;
-
-public class Category
+namespace NetCore.Models
 {
-    public int Id { get; set; }
-
-    [Required(ErrorMessage = "Введите имя")]
-    [MinLength(3, ErrorMessage = "Имя должно быть больше 3 символов")]
-    [MaxLength(20, ErrorMessage = "Имя должно быть меньше 20 символов")]
-    public String Name { get; set; }
-
-    [Required(ErrorMessage = "Введите описание")]
-    [MinLength(3, ErrorMessage = "Описание должно быть больше 3 символов")]
-    [MaxLength(20, ErrorMessage = "Описание должно быть меньше 20 символов")]
-    public String Description { get; set; }
-  
-    //  private Dictionary<Status, List<int>> _transitions = new Dictionary<Status, List<int>>(); //Ключ - статус, вэлью - id статусов доступных для перехода
-   
-    public List<DpWithoutValue> Dps = new List<DpWithoutValue>();
-    
-    public Category() { }
-
-    public Category(string name, string description)
+    [Table("сategory")] 
+    public class Category
     {
-        Name = name;
-        Description = description;
+        public int Id { get; set; }
+
+        [Required(ErrorMessage = "Введите имя")]
+        [MinLength(3, ErrorMessage = "Имя должно быть больше 3 символов")]
+        [MaxLength(20, ErrorMessage = "Имя должно быть меньше 20 символов")]
+        public string Name { get; set; }
+
+        [Required(ErrorMessage = "Введите описание")]
+        [MinLength(3, ErrorMessage = "Описание должно быть больше 3 символов")]
+        [MaxLength(20, ErrorMessage = "Описание должно быть меньше 20 символов")]
+        public string Description { get; set; }
+
+        public List<DpWithoutValue> Dps { get; set; } // Навигационное свойство для связи с DpWithoutValue
+
+        public Category()
+        {
+            Dps = new List<DpWithoutValue>();
+        }
+
+        public Category(string name, string description)
+        {
+            Name = name;
+            Description = description;
+        }
     }
     /*public void addStatus(Status status, List<int> ids)
     {

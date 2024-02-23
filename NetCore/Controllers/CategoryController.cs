@@ -9,15 +9,23 @@ public class CategoryController : Controller
 {
     private readonly ILogger<CategoryController> _logger;
 
-    private readonly CategoryServiceDao _categoryService = new CategoryServiceDao();
+    private readonly CategoryServiceDao _categoryService;
 
-    public CategoryController(ILogger<CategoryController> logger)
+    public CategoryController(ILogger<CategoryController> logger, MyDbContext dbContext)
     {
         _logger = logger;
+        _categoryService = new CategoryServiceDao(dbContext);
     }
+
     
     public IActionResult Home()
     {
+        // Получение списка категорий из базы данных (замените этот код на вашу логику получения категорий)
+        var categories = _categoryService.GetAllCategories();
+
+        // Передача списка категорий в ViewBag
+        ViewBag.Categories = categories;
+        
         return View();
     }
 
@@ -34,12 +42,43 @@ public class CategoryController : Controller
         }
         return View();
     }
-
-    public IActionResult EditCategory()
+    
+    /*[HttpGet]
+    public IActionResult GetCategory() => View();*/
+    
+    [HttpGet]
+    public IActionResult GetCategoryForId([FromQuery] int id)
     {
-        //  var category = _categoryService.getCategory(id);
+        Console.WriteLine(id);
+        var category = _categoryService.getCategory(id);
+        return View("GetCategoryForId", category);
+    }
+    
+    /*[HttpGet]
+    public IActionResult GetCategory()
+    {
 
-        return View(new Category("Имя", "Описание"));
+        var id = _categoryService.AddCategory(new Category("Name", "Описание") );
+        return View("GetCategoryForId" ,_categoryService.getCategory(id));
+    }
+    */
+    
+    [HttpPost]
+    public IActionResult EditCategory(int id, Category category)
+    {
+        if (ModelState.IsValid)
+        {
+            var existingCategory = _categoryService.getCategory(id);
+            if (existingCategory != null)
+            {
+                existingCategory.Name = category.Name;
+                existingCategory.Description = category.Description;
+                _categoryService.UpdateCategory(existingCategory);
+                return View("CategoryDetails", category); 
+            }
+        }
+        // Если данные не сохранены, вернуть форму с ошибками
+        return View(category);
     }
 
 
