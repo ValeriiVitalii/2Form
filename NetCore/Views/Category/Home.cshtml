@@ -1,21 +1,32 @@
-@{
-    ViewData["Title"] = "Home";
-}
+<div class="text-center">
+    <h1 class="display-4">Вы можете настроить категорию под себя и создавать в ней задачи</h1>
+</div>
+
 <style>
     .table-hover tbody tr:hover .expand-icon {
         display: inline-block;
     }
+
     .expand-icon {
         display: none;
-        cursor: pointer;
+        float: right; /* Выравнивание справа */
+        font-size: 18px; /* Размер стрелки */
+        transition: transform 0.3s; /* Плавное изменение при наведении */
     }
+
+    .expand-icon:hover {
+        transform: rotate(90deg); /* Изменение угла поворота при наведении */
+    }
+
     .expanded-input {
         display: none;
     }
+
+    .expanded-input-visible {
+        display: block;
+    }
 </style>
-<div class="text-center">
-    <h1 class="display-4">Вы можете настроить категорию под себя и создавать в ней задачи</h1>
-</div>
+
 
 <!-- Модальное окно с категориями -->
 <div id="myModal" style="max-width: 400px; width: 80%; border-radius: 10px; background-color: rgba(255, 255, 255, 0.95); padding: 20px; margin: 20px auto;">
@@ -32,21 +43,24 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var category in ViewBag.Categories)
-                {
-                    <tr>
-                        <td>@category.Id</td>
-                        <td>
-                            <div>
-                                @category.Name
-                                <span class="expand-icon" onclick="toggleExpandedInput(this)">▶️</span>
-                            </div>
-                            <div class="expanded-input">
-                                <!-- Здесь можно добавить дополнительные элементы, такие как кнопки -->
-                            </div>
-                        </td>
-                    </tr>
-                }
+               @foreach (var category in ViewBag.Categories)
+               {
+                   <tr>
+                       <td>@category.Id</td>
+                       <td>
+                           <div>
+                               @category.Name
+                               <span class="expand-icon" onclick="toggleExpandedInput('@category.Id')">▶️</span>
+                           </div>
+                           <div id="expandedInput-@category.Id" class="expanded-input" style="display: none;">
+                               <!-- Здесь можно добавить дополнительные элементы, такие как кнопки -->
+                               <button>Кнопка 1</button>
+                               <button>Кнопка 2</button>
+                           </div>
+                       </td>
+                   </tr>
+               }
+
             </tbody>
         </table>
     </div>
@@ -59,14 +73,29 @@
 </div>
 
 <script>
-    function toggleExpandedInput(element) {
-        var expandedInput = element.nextElementSibling;
+    var expandedCategoryId = null; // Переменная для хранения ID раскрытой категории
+
+    function toggleExpandedInput(categoryId) {
+        if (expandedCategoryId && expandedCategoryId !== categoryId) {
+            var previouslyExpanded = document.getElementById('expandedInput-' + expandedCategoryId);
+            if (previouslyExpanded) {
+                previouslyExpanded.style.display = 'none';
+            }
+        }
+
+        var expandedInput = document.getElementById('expandedInput-' + categoryId);
         if (expandedInput) {
-            if (expandedInput.style.display === 'block') {
-                expandedInput.style.display = 'none';
-            } else {
+            if (expandedInput.style.display === 'none') {
                 expandedInput.style.display = 'block';
+                expandedCategoryId = categoryId; // Обновляем ID раскрытой категории
+            } else {
+                expandedInput.style.display = 'none';
+                if (expandedCategoryId === categoryId) {
+                    expandedCategoryId = null; // Очищаем переменную, если текущая категория свернута
+                }
             }
         }
     }
 </script>
+
+

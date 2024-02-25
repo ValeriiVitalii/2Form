@@ -16,7 +16,13 @@ public class DpWithoutValueServiceDao : IDpWithoutValueService
     
     public void addDpWithoutValue(DpWithoutValue dpWithoutValue)
     {
-        //_db.Add(dpWithoutValue);
+        _db.Add(dpWithoutValue);
+        _db.SaveChanges();
+    }
+
+    public List<DpWithoutValue> GetAllDpWithoutValue()
+    {
+        return _db.DpWithoutValues.ToList();
     }
 
     /*public DpWithoutValue getDpWithoutValue(int dpId)

@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using NetCore.Models;
+using test;
 using test.service.сategoryManagement.dpService;
 
 namespace NetCore.Controllers;
@@ -19,6 +20,26 @@ public class DpController : Controller
 
     public IActionResult Home()
     {
+        // Получение списка категорий из базы данных (замените этот код на вашу логику получения категорий)
+        var dps = _dpWithoutValueService.GetAllDpWithoutValue();
+
+        // Передача списка категорий в ViewBag
+        ViewBag.Dps = dps;
+        
+        return View();
+    }
+    
+    [HttpGet]
+    public IActionResult CreateDpWithoutValue() => View();
+    
+    [HttpPost]
+    public IActionResult CreateDpWithoutValue(DpWithoutValue dpWithoutValue)
+    {
+        if (ModelState.IsValid)
+        {
+            _dpWithoutValueService.addDpWithoutValue(dpWithoutValue);
+            return View("DpDetails", dpWithoutValue); 
+        }
         return View();
     }
 
