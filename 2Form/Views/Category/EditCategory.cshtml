@@ -1,0 +1,14 @@
+@model Category
+
+<form asp-controller="Category" asp-action="EditCategory" method="post" >
+    <div class="form-group">
+    <div asp-validation-summary="All" class="text-danger"></div>
+        <label asp-for="Name">Новое имя:</label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Description">Новое описание:</label>
+        <input asp-for="Description" class="form-control"/>
+    </div>
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+</form>
