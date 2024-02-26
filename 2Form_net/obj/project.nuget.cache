@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zQb8YxM+yun4/crSumDqY8ByP2pHZqegCjCHVPmZwxU18u9ctetxCm6phPbrGZusVsQ0dPdZpi59qoUlCanPwQ==",
+  "dgSpecHash": "gGihwUeOw/jMdGuf0LjDJEITxYh1dg8mTlVBPCskz09XFH38+JJOMP+y7WrpF0ekP/J9vFmtUWQuvjyn0waNfw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\GorbatkovVG\\RiderProjects\\2FormNew\\2FormNew\\2FormNew.csproj",
+  "projectFilePath": "C:\\Users\\GorbatkovVG\\RiderProjects\\2Form\\2Form_net\\2Form.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\GorbatkovVG\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\GorbatkovVG\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",

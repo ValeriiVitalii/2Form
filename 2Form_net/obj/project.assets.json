@@ -2263,11 +2263,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\GorbatkovVG\\RiderProjects\\2FormNew\\2FormNew\\2FormNew.csproj",
-      "projectName": "2FormNew",
-      "projectPath": "C:\\Users\\GorbatkovVG\\RiderProjects\\2FormNew\\2FormNew\\2FormNew.csproj",
+      "projectUniqueName": "C:\\Users\\GorbatkovVG\\RiderProjects\\2Form\\2Form_net\\2Form.csproj",
+      "projectName": "2Form",
+      "projectPath": "C:\\Users\\GorbatkovVG\\RiderProjects\\2Form\\2Form_net\\2Form.csproj",
       "packagesPath": "C:\\Users\\GorbatkovVG\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\GorbatkovVG\\RiderProjects\\2FormNew\\2FormNew\\obj\\",
+      "outputPath": "C:\\Users\\GorbatkovVG\\RiderProjects\\2Form\\2Form_net\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\GorbatkovVG\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -2288,11 +2288,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
