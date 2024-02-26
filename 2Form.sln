@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2FormNew", "2FormNew\2FormNew.csproj", "{0AE201E4-B296-4705-9070-A062C36EE466}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2Form", "2Form\2Form.csproj", "{0AE201E4-B296-4705-9070-A062C36EE466}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
