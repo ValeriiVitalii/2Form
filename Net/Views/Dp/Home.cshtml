@@ -1,0 +1,9 @@
+@{
+    ViewData["Title"] = "Home";
+}
+
+<!-- Кнопки "Создать дп" и "Открыть дп" -->
+<div style="text-align: center; margin-top: 20px;">
+    <a asp-controller="Dp" asp-action="CreateDpWithoutValue" class="btn btn-primary">Создать доп параметр</a>
+    <button class="btn btn-primary" onclick="document.getElementById('myModal').style.display='block'">Открыть доп параметр</button>
+</div>

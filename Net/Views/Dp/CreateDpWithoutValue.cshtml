@@ -1,0 +1,17 @@
+@using _Net.Models.Dp
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model _Net.Models.Dp.DpWithoutValue
+<div class="container" style="max-width: 400px; margin: 0 auto; border: 4px solid black; border-radius: 10px; padding: 10px; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);" xmlns="http://www.w3.org/1999/html">
+    <form asp-controller="Dp" asp-action="CreateDpWithoutValue" method="post">
+        <div style="margin-bottom: 10px;">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <label asp-for="Name">Имя</label>
+            <input asp-for="Name" class="form-control" style="width: 100%; padding: 5px;">
+            
+            <!-- Замененный выпадающий список -->
+            <label asp-for="Type">Тип</label>
+            <select asp-for="Type" asp-items="Html.GetEnumSelectList<TypeDp>()" class="form-control" style="width: 100%; padding: 5px;"></select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
