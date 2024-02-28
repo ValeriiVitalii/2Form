@@ -1,7 +1,7 @@
 @model _Net.Models.Category
 <form asp-controller="Category" asp-action="EditCategory" asp-route-id="@Model.Id" method="post">
     <div class="container" style="max-width: 400px; margin: 0 auto; border: 4px solid black; border-radius: 10px; padding: 10px; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);">
-        <h2> Номер задачи: @Model.Id</h2>
+        <h2> Номер категории: @Model.Id</h2>
         <h2> Имя: @Model.Name</h2>
         <h2> Описание: @Model.Description</h2>
         <button type="submit" class="btn btn-primary">Изменить</button>

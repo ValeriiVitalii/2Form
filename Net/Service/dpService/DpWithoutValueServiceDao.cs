@@ -14,7 +14,7 @@ public class DpWithoutValueServiceDao : IDpWithoutValueService
         _db = dbContext;
     }
     
-    public void addDpWithoutValue(DpWithoutValue dpWithoutValue)
+    public void AddDpWithoutValue(DpWithoutValue dpWithoutValue)
     {
         _db.Add(dpWithoutValue);
         _db.SaveChanges();

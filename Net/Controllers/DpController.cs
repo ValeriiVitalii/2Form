@@ -39,7 +39,7 @@ public class DpController : Controller
     {
         if (ModelState.IsValid)
         {
-            _dpWithoutValueService.addDpWithoutValue(dpWithoutValue);
+            _dpWithoutValueService.AddDpWithoutValue(dpWithoutValue);
             return View("DpDetails", dpWithoutValue); 
         }
         return View();

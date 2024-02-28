@@ -4,7 +4,7 @@ namespace _Net.Service.dpService;
 
 public interface IDpWithoutValueService
 {
-    public void addDpWithoutValue(DpWithoutValue dpWithoutValue);
+    public void AddDpWithoutValue(DpWithoutValue dpWithoutValue);
 
     public List<DpWithoutValue> GetAllDpWithoutValue();
 

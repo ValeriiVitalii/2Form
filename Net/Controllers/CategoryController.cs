@@ -1,6 +1,9 @@
 using System.Diagnostics;
 using _Net.Models;
+using _Net.Models.Dp;
 using _Net.Service.categoryService;
+using _Net.Service.dpService;
+using Mapster;
 using Microsoft.AspNetCore.Mvc;
 using NetCore;
 using NetCore.Models;
@@ -12,12 +15,18 @@ public class CategoryController : Controller
     private readonly ILogger<CategoryController> _logger;
 
     private readonly ICategoryService _categoryService;
+    
+    private readonly IDpWithoutValueService _dpWithoutValueService;
 
-    public CategoryController(ILogger<CategoryController> logger, MyDbContext dbContext, ICategoryService categoryService)
+    public CategoryController(ILogger<CategoryController> logger,
+                                MyDbContext dbContext, 
+                                ICategoryService categoryService,
+                                IDpWithoutValueService dpWithoutValueService)
     {
         _logger = logger;
         _categoryService = new CategoryServiceDao(dbContext);
         _categoryService = categoryService;
+        _dpWithoutValueService = dpWithoutValueService;
     }
 
     
@@ -36,12 +45,16 @@ public class CategoryController : Controller
     public IActionResult CreateCategory() => View();
     
     [HttpPost]
-    public IActionResult CreateCategory(Category category)
+    public IActionResult CreateCategory(CreateCategoryAndDpWithoutValue categoryAndDp)
     {
         if (ModelState.IsValid)
         {
+            var category = categoryAndDp.Adapt<Category>();
             _categoryService.AddCategory(category);
-            return View("CategoryDetails", category); 
+            
+            var dpWithOutValue = categoryAndDp.Adapt<DpWithoutValue>();
+            _dpWithoutValueService.AddDpWithoutValue(dpWithOutValue);
+            return View("CategoryAndDpDetails", categoryAndDp); 
         }
         return View();
     }

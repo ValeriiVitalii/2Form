@@ -103,3 +103,5 @@ C:\Users\GorbatkovVG\RiderProjects\2Form\Net\obj\Debug\net8.0\refint\Net.dll
 C:\Users\GorbatkovVG\RiderProjects\2Form\Net\obj\Debug\net8.0\Net.pdb
 C:\Users\GorbatkovVG\RiderProjects\2Form\Net\obj\Debug\net8.0\Net.genruntimeconfig.cache
 C:\Users\GorbatkovVG\RiderProjects\2Form\Net\obj\Debug\net8.0\ref\Net.dll
+C:\Users\GorbatkovVG\RiderProjects\2Form\Net\bin\Debug\net8.0\Mapster.dll
+C:\Users\GorbatkovVG\RiderProjects\2Form\Net\bin\Debug\net8.0\Mapster.Core.dll

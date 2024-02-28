@@ -18,6 +18,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\GorbatkovVG\RiderProjects\2Form\Net
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/GorbatkovVG/RiderProjects/2Form/Net/Views/Category/CategoryAndDpDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcQ2F0ZWdvcnlBbmREcERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/GorbatkovVG/RiderProjects/2Form/Net/Views/Category/CategoryDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcQ2F0ZWdvcnlEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

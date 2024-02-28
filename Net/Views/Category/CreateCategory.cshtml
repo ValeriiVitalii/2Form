@@ -1,13 +1,127 @@
-@model _Net.Models.Category
-<div class="container" style="max-width: 400px; margin: 0 auto; border: 4px solid black; border-radius: 10px; padding: 10px; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);">
+@using _Net.Models.Dp
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model _Net.Models.CreateCategoryAndDpWithoutValue;
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        .grouped-fields {
+            max-width: 400px;
+            margin: 0 auto;
+            border: 4px solid black;
+            border-radius: 10px;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); 
+            padding: 10px;
+        }
+        
+        /* Убираем индивидуальные границы и тени с элементов .form-control */
+        .form-control {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            box-shadow: none; /* Убираем тень */
+        }
+
+        /* Остальные стили оставляем без изменений */
+        .btn-primary {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .tab {
+            display: none;
+        }
+
+        .tab.active {
+            display: block;
+        }
+
+        .tab-switch-container {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .tab-switch {
+            cursor: pointer;
+            padding: 5px 10px;
+            background-color: #f0f0f0;
+            border: none;
+            border-radius: 4px;
+            margin-right: 5px;
+        }
+
+        .tab-switch.active {
+            background-color: #e0e0e0;
+        }
+
+        .btn-primary:focus,
+        .btn-primary:active {
+            outline: none;
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="tab-switch-container"> <!-- Обновленный контейнер для кнопок -->
+        <div class="tab-switch active" data-target="#category">Категория</div>
+        <div class="tab-switch" data-target="#extraParameters">Доп параметры</div>
+    </div>
+
     <form asp-controller="Category" asp-action="CreateCategory" method="post">
-        <div style="margin-bottom: 10px;">
+        <div class="grouped-fields">
             <div asp-validation-summary="All" class="text-danger"></div>
-            <label asp-for="Name"></label>
-            <input asp-for="Name" class="form-control" style="width: 100%; padding: 5px;">
-            <label asp-for="Description"></label>
-            <input asp-for="Description" class="form-control" style="width: 100%; padding: 5px;">
+            <div id="category" class="tab active">
+                <!-- Форма создания категории -->
+                <label asp-for="CategoryName">Название</label>
+                <input asp-for="CategoryName" class="form-control" style="width: 100%; padding: 5px;">
+                <label asp-for="CategoryDescription">Описание</label>
+                <input asp-for="CategoryDescription" class="form-control" style="width: 100%; padding: 5px;">
+                <button type="submit" class="btn btn-primary">Создать</button>
+            </div>
+            <div id="extraParameters" class="tab">
+                <!-- Форма создания дополнительных параметров -->
+                <div style="margin-bottom: 10px;">
+                    <label asp-for="DpName">Имя</label>
+                    <input asp-for="DpName" class="form-control" style="width: 100%; padding: 5px;">
+
+                    <!-- Замененный выпадающий список -->
+                    <label asp-for="DpType">Тип</label>
+                    <select asp-for="DpType" asp-items="Html.GetEnumSelectList<TypeDp>()" class="form-control" style="width: 100%; padding: 5px;"></select>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-</div>
+    </div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.tab-switch').click(function(){
+            var target = $(this).data('target');
+            $('.tab').removeClass('active');
+            $('.tab-switch').removeClass('active');
+            $(this).addClass('active');
+            $(target).addClass('active');
+        });
+    });
+</script>
+
+</body>
+</html>

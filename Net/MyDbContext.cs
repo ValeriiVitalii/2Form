@@ -1,8 +1,6 @@
 using _Net.Models;
 using _Net.Models.Dp;
 using Microsoft.EntityFrameworkCore;
-using Npgsql.EntityFrameworkCore;
-using NetCore.Models;
 
 namespace NetCore
 {

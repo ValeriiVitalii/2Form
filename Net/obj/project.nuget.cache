@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "Ge7fIzAUdswAnKxU7Iyb8MwVi96PiqEI5udj5g0EdGB1FxG9XDJIltou2if+HSiSHm4Yq24cl9ZTEZTgqDKd8A==",
+  "dgSpecHash": "8Nq7CN80s/Cq70KEjaec8FbDcx+OEON/8IOe6r0dxWZEbXg+MDBQea2UzjkdbJD+vXga3EFqyVnG04XD9rYBvQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\GorbatkovVG\\RiderProjects\\2Form\\Net\\Net.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\GorbatkovVG\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\GorbatkovVG\\.nuget\\packages\\mapster\\7.4.0\\mapster.7.4.0.nupkg.sha512",
+    "C:\\Users\\GorbatkovVG\\.nuget\\packages\\mapster.core\\1.2.1\\mapster.core.1.2.1.nupkg.sha512",
     "C:\\Users\\GorbatkovVG\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
     "C:\\Users\\GorbatkovVG\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.3.3\\microsoft.codeanalysis.analyzers.3.3.3.nupkg.sha512",
     "C:\\Users\\GorbatkovVG\\.nuget\\packages\\microsoft.codeanalysis.common\\4.5.0\\microsoft.codeanalysis.common.4.5.0.nupkg.sha512",
