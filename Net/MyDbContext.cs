@@ -21,6 +21,6 @@ namespace NetCore
 
         // DbSet для ваших моделей данных
         public DbSet<Category> Categories { get; set; }
-        public DbSet<DpWithoutValue> DpWithoutValues { get; set; }
+        public DbSet<Dp> Dp { get; set; }
     }
 }

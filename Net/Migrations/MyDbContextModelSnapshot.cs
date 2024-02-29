@@ -44,7 +44,7 @@ namespace _2FormNew.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("_Net.Models.Dp.DpWithoutValue", b =>
+            modelBuilder.Entity("_Net.Models.Dp.Dp", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -67,10 +67,10 @@ namespace _2FormNew.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("DpWithoutValues");
+                    b.ToTable("Dp");
                 });
 
-            modelBuilder.Entity("_Net.Models.Dp.DpWithoutValue", b =>
+            modelBuilder.Entity("_Net.Models.Dp.Dp", b =>
                 {
                     b.HasOne("_Net.Models.Category", "Category")
                         .WithMany()

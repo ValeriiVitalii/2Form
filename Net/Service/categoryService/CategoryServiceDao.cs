@@ -18,8 +18,7 @@ public class CategoryServiceDao : ICategoryService
         // category.Dps = new List<DpWithoutValue> { new DpWithoutValue(TypeDp.Text, "Текст") };
 
         _db.Categories.Add(category);
-        _db.SaveChanges();
-        return _storage.AddCategory(category);
+        return _db.SaveChanges();
     }
 
     public Category getCategory(int id)

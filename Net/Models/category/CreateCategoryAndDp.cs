@@ -3,7 +3,7 @@ using _Net.Models.Dp;
 
 namespace _Net.Models;
 
-public class CreateCategoryAndDpWithoutValue
+public class CreateCategoryAndDp
 {
     [Required(ErrorMessage = "Введите имя")]
     [MinLength(3, ErrorMessage = "Имя должно быть больше 3 символов")]

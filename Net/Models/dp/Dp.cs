@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace _Net.Models.Dp
 {
-    public class DpWithoutValue
+    public class Dp
     {
         public int Id { get; set; }
 

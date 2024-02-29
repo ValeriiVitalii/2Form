@@ -11,19 +11,19 @@ public class DpController : Controller
 {
     private readonly ILogger<DpController> _logger;
 
-    private readonly IDpWithoutValueService _dpWithoutValueService;
+    private readonly IDpService _dpService;
 
-    public DpController(ILogger<DpController> logger, MyDbContext dbContext, IDpWithoutValueService dpWithoutValueService)
+    public DpController(ILogger<DpController> logger, MyDbContext dbContext, IDpService dpService)
     {
         _logger = logger;
-        _dpWithoutValueService = new DpWithoutValueServiceDao(dbContext);
-        _dpWithoutValueService = dpWithoutValueService;
+        _dpService = new DpServiceDao(dbContext);
+        _dpService = dpService;
     }
 
     public IActionResult Home()
     {
         // Получение списка категорий из базы данных (замените этот код на вашу логику получения категорий)
-        var dps = _dpWithoutValueService.GetAllDpWithoutValue();
+        var dps = _dpService.GetAllDp();
 
         // Передача списка категорий в ViewBag
         ViewBag.Dps = dps;
@@ -35,12 +35,12 @@ public class DpController : Controller
     public IActionResult CreateDpWithoutValue() => View();
     
     [HttpPost]
-    public IActionResult CreateDpWithoutValue(DpWithoutValue dpWithoutValue)
+    public IActionResult CreateDpWithoutValue(Dp dp)
     {
         if (ModelState.IsValid)
         {
-            _dpWithoutValueService.AddDpWithoutValue(dpWithoutValue);
-            return View("DpDetails", dpWithoutValue); 
+            _dpService.AddDp(dp);
+            return View("DpDetails", dp); 
         }
         return View();
     }

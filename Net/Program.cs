@@ -7,12 +7,12 @@ using NetCore;
 using Mapster;
 
 //Мапинг
-TypeAdapterConfig<CreateCategoryAndDpWithoutValue, Category>
+TypeAdapterConfig<CreateCategoryAndDp, Category>
     .NewConfig()
     .Map(dest => dest.Name, src => src.CategoryName)
     .Map(dest => dest.Description, src => src.CategoryDescription);
 
-TypeAdapterConfig<CreateCategoryAndDpWithoutValue, DpWithoutValue>
+TypeAdapterConfig<CreateCategoryAndDp, Dp>
     .NewConfig()
     .Map(dest => dest.Type, src => src.DpType)
     .Map(dest => dest.Name, src => src.DpName);
@@ -28,7 +28,7 @@ builder.Services.AddDbContext<MyDbContext>(options =>
 
 // Регистрация интерфейса ICategoryService и его реализации
 builder.Services.AddScoped<ICategoryService, CategoryServiceDao>();
-builder.Services.AddScoped<IDpWithoutValueService, DpWithoutValueServiceDao>();
+builder.Services.AddScoped<IDpService, DpServiceDao>();
 
 var app = builder.Build();
 

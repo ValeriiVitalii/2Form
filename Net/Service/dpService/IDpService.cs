@@ -2,11 +2,11 @@ using _Net.Models.Dp;
 
 namespace _Net.Service.dpService;
 
-public interface IDpWithoutValueService
+public interface IDpService
 {
-    public void AddDpWithoutValue(DpWithoutValue dpWithoutValue);
+    public void AddDp(Dp dp);
 
-    public List<DpWithoutValue> GetAllDpWithoutValue();
+    public List<Dp> GetAllDp();
 
     /*internal void addCatIdInDp(int dpId, List<int> catsId);
 

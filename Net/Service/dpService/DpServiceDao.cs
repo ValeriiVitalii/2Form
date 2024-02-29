@@ -3,26 +3,26 @@ using NetCore;
 
 namespace _Net.Service.dpService;
 
-public class DpWithoutValueServiceDao : IDpWithoutValueService
+public class DpServiceDao : IDpService
 {
     private Storage _storage = new Storage();
     
     private readonly MyDbContext _db;
     
-    public DpWithoutValueServiceDao(MyDbContext dbContext)
+    public DpServiceDao(MyDbContext dbContext)
     {
         _db = dbContext;
     }
     
-    public void AddDpWithoutValue(DpWithoutValue dpWithoutValue)
+    public void AddDp(Dp dp)
     {
-        _db.Add(dpWithoutValue);
+        _db.Add(dp);
         _db.SaveChanges();
     }
 
-    public List<DpWithoutValue> GetAllDpWithoutValue()
+    public List<Dp> GetAllDp()
     {
-        return _db.DpWithoutValues.ToList();
+        return _db.Dp.ToList();
     }
 
     /*public DpWithoutValue getDpWithoutValue(int dpId)

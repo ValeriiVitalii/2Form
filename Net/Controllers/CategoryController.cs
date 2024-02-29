@@ -16,17 +16,17 @@ public class CategoryController : Controller
 
     private readonly ICategoryService _categoryService;
     
-    private readonly IDpWithoutValueService _dpWithoutValueService;
+    private readonly IDpService _dpService;
 
     public CategoryController(ILogger<CategoryController> logger,
                                 MyDbContext dbContext, 
                                 ICategoryService categoryService,
-                                IDpWithoutValueService dpWithoutValueService)
+                                IDpService dpService)
     {
         _logger = logger;
         _categoryService = new CategoryServiceDao(dbContext);
         _categoryService = categoryService;
-        _dpWithoutValueService = dpWithoutValueService;
+        _dpService = dpService;
     }
 
     
@@ -45,16 +45,20 @@ public class CategoryController : Controller
     public IActionResult CreateCategory() => View();
     
     [HttpPost]
-    public IActionResult CreateCategory(CreateCategoryAndDpWithoutValue categoryAndDp)
+    public IActionResult CreateCategory(CreateCategoryAndDp categoryAndDp)
     {
         if (ModelState.IsValid)
         {
+            // Адаптируем и сохраняем Category
             var category = categoryAndDp.Adapt<Category>();
-            _categoryService.AddCategory(category);
-            
-            var dpWithOutValue = categoryAndDp.Adapt<DpWithoutValue>();
-            _dpWithoutValueService.AddDpWithoutValue(dpWithOutValue);
-            return View("CategoryAndDpDetails", categoryAndDp); 
+            _categoryService.AddCategory(category); // После выполнения этого метода, у category должен быть установлен корректный Id
+        
+            // Адаптируем Dp и устанавливаем CategoryId
+            var dp = categoryAndDp.Adapt<Dp>();
+            dp.CategoryId = category.Id; // Устанавливаем CategoryId для Dp с корректным Id из только что сохраненной Category
+            _dpService.AddDp(dp); // Сохраняем Dp
+        
+            return View("CategoryAndDpDetails", categoryAndDp);
         }
         return View();
     }
