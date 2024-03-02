@@ -1,6 +1,7 @@
 using _Net.Models;
 using _Net.Models.Dp;
 using Microsoft.EntityFrameworkCore;
+using Task = NetCore.Models.Task;
 
 namespace NetCore
 {
@@ -25,6 +26,8 @@ namespace NetCore
         public DbSet<Status> Status { get; set; }
         
         public DbSet<StatusTransition> StatusTransitions { get; set; }
+        
+        public DbSet<Task> Tasks { get; set; }
 
         
         //Связь многие к многим
