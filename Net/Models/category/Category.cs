@@ -17,5 +17,7 @@ namespace _Net.Models
         public string Description { get; set; }
         
         public List<Status> Statuses { get; set; } = new List<Status>();
+        
+        public ICollection<StatusTransition> AllowedTransitions { get; set; }
     }
 }

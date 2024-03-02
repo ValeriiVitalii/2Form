@@ -22,8 +22,9 @@ namespace NetCore
         // DbSet моделей данных
         public DbSet<Category> Categories { get; set; }
         public DbSet<Dp> Dp { get; set; }
-
         public DbSet<Status> Status { get; set; }
+        
+        public DbSet<StatusTransition> StatusTransitions { get; set; }
 
         
         //Связь многие к многим
@@ -33,6 +34,25 @@ namespace NetCore
                 .HasMany(c => c.Statuses)
                 .WithMany(s => s.Categories)
                 .UsingEntity(j => j.ToTable("CategoryStatus"));
+            
+            modelBuilder.Entity<StatusTransition>()
+                .HasOne(p => p.Status)
+                .WithMany()
+                .HasForeignKey(p => p.StatusId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+
+            modelBuilder.Entity<StatusTransition>()
+                .HasOne(p => p.AllowedStatus)
+                .WithMany()
+                .HasForeignKey(p => p.AllowedStatusId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // Новая конфигурация для связи StatusTransition с Category
+            modelBuilder.Entity<StatusTransition>()
+                .HasOne(st => st.Category)
+                .WithMany(c => c.AllowedTransitions)
+                .HasForeignKey(st => st.CategoryId);
         }
     }
 }

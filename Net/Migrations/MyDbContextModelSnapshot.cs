@@ -36,6 +36,34 @@ namespace _2FormNew.Migrations
                     b.ToTable("CategoryStatus", (string)null);
                 });
 
+            modelBuilder.Entity("StatusTransition", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AllowedStatusId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("StatusId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AllowedStatusId");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("StatusId");
+
+                    b.ToTable("StatusTransitions");
+                });
+
             modelBuilder.Entity("_Net.Models.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -119,6 +147,33 @@ namespace _2FormNew.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("StatusTransition", b =>
+                {
+                    b.HasOne("_Net.Models.Status", "AllowedStatus")
+                        .WithMany()
+                        .HasForeignKey("AllowedStatusId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("_Net.Models.Category", "Category")
+                        .WithMany("AllowedTransitions")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("_Net.Models.Status", "Status")
+                        .WithMany()
+                        .HasForeignKey("StatusId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("AllowedStatus");
+
+                    b.Navigation("Category");
+
+                    b.Navigation("Status");
+                });
+
             modelBuilder.Entity("_Net.Models.Dp.Dp", b =>
                 {
                     b.HasOne("_Net.Models.Category", "Category")
@@ -128,6 +183,11 @@ namespace _2FormNew.Migrations
                         .IsRequired();
 
                     b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("_Net.Models.Category", b =>
+                {
+                    b.Navigation("AllowedTransitions");
                 });
 #pragma warning restore 612, 618
         }

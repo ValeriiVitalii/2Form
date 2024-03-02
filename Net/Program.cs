@@ -31,6 +31,7 @@ builder.Services.AddDbContext<MyDbContext>(options =>
 builder.Services.AddScoped<ICategoryService, CategoryServiceDao>();
 builder.Services.AddScoped<IDpService, DpServiceDao>();
 builder.Services.AddScoped<IStatusService, StatusServiceDao>();
+builder.Services.AddScoped<IStatusTransitionService, StatusTransitionServiceDao>();
 
 var app = builder.Build();
 
