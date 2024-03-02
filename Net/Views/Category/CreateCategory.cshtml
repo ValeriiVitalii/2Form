@@ -98,8 +98,7 @@
                 <div style="margin-bottom: 10px;">
                     <label asp-for="DpName">Имя</label>
                     <input asp-for="DpName" class="form-control" style="width: 100%; padding: 5px;">
-
-                    <!-- Замененный выпадающий список -->
+                    
                     <label asp-for="DpType">Тип</label>
                     <select asp-for="DpType" asp-items="Html.GetEnumSelectList<TypeDp>()" class="form-control" style="width: 100%; padding: 5px;"></select>
                 </div>

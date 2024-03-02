@@ -21,6 +21,21 @@ namespace _2FormNew.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("CategoryStatus", b =>
+                {
+                    b.Property<int>("CategoriesId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("StatusesId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("CategoriesId", "StatusesId");
+
+                    b.HasIndex("StatusesId");
+
+                    b.ToTable("CategoryStatus", (string)null);
+                });
+
             modelBuilder.Entity("_Net.Models.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -57,8 +72,7 @@ namespace _2FormNew.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("character varying(20)");
+                        .HasColumnType("text");
 
                     b.Property<int>("Type")
                         .HasColumnType("integer");
@@ -68,6 +82,41 @@ namespace _2FormNew.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Dp");
+                });
+
+            modelBuilder.Entity("_Net.Models.Status", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsTerminal")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Status");
+                });
+
+            modelBuilder.Entity("CategoryStatus", b =>
+                {
+                    b.HasOne("_Net.Models.Category", null)
+                        .WithMany()
+                        .HasForeignKey("CategoriesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("_Net.Models.Status", null)
+                        .WithMany()
+                        .HasForeignKey("StatusesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("_Net.Models.Dp.Dp", b =>

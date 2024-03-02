@@ -1,24 +1,26 @@
 using _Net.Models;
+using _Net.Service.statusService;
 using NetCore;
 
 namespace _Net.Service.categoryService;
 
 public class CategoryServiceDao : ICategoryService
 {
-    private Storage _storage = new Storage();
     private readonly MyDbContext _db;
+
+    private readonly IStatusService _statusService;
     
-    public CategoryServiceDao(MyDbContext dbContext)
+    public CategoryServiceDao(MyDbContext dbContext, IStatusService statusService)
     {
         _db = dbContext;
+        _statusService = statusService;
     }
     
-    public int AddCategory(Category category)
+    public async Task AddCategory(Category category)
     {
-        // category.Dps = new List<DpWithoutValue> { new DpWithoutValue(TypeDp.Text, "Текст") };
-
+        category.Statuses = await _statusService.GetDefaultStatuses(); //Добавляем базовые статусы
         _db.Categories.Add(category);
-        return _db.SaveChanges();
+        await _db.SaveChangesAsync();
     }
 
     public Category getCategory(int id)
@@ -39,7 +41,6 @@ public class CategoryServiceDao : ICategoryService
 
     public int RemoveCategory(int categoryId)
     {
-        _storage.RemoveCategory(categoryId);
         return categoryId;
     }
 }

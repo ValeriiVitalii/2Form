@@ -1,24 +1,15 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace _Net.Models;
 
-public class Status(string name, bool isTerminal)
+public class Status
 {
-    private int _id;
+    public int Id { get; set; }
+    
+    [Required(ErrorMessage = "Укажите имя")]
+    public string Name { get; set; }
 
-    public int Id
-    {
-        get => _id;
-        set => _id = value;
-    }
-
-    public string Name
-    {
-        get => name;
-        set => name = value ?? throw new ArgumentNullException(nameof(value));
-    }
-
-    public bool IsTerminal
-    {
-        get => isTerminal;
-        set => isTerminal = value;
-    }
+    public bool IsTerminal { get; set; }
+    
+    public List<Category> Categories { get; set; } = new List<Category>();
 }

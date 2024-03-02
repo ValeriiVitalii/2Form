@@ -1,5 +1,4 @@
 using System.ComponentModel.DataAnnotations;
-using _Net.Models.Dp;
 
 namespace _Net.Models
 {
@@ -16,5 +15,7 @@ namespace _Net.Models
         [MinLength(3, ErrorMessage = "Описание должно быть больше 3 символов")]
         [MaxLength(20, ErrorMessage = "Описание должно быть меньше 20 символов")]
         public string Description { get; set; }
+        
+        public List<Status> Statuses { get; set; } = new List<Status>();
     }
 }

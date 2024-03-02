@@ -2,6 +2,7 @@ using _Net.Models;
 using _Net.Models.Dp;
 using _Net.Service.categoryService;
 using _Net.Service.dpService;
+using _Net.Service.statusService;
 using Microsoft.EntityFrameworkCore;
 using NetCore;
 using Mapster;
@@ -29,6 +30,7 @@ builder.Services.AddDbContext<MyDbContext>(options =>
 // Регистрация интерфейса ICategoryService и его реализации
 builder.Services.AddScoped<ICategoryService, CategoryServiceDao>();
 builder.Services.AddScoped<IDpService, DpServiceDao>();
+builder.Services.AddScoped<IStatusService, StatusServiceDao>();
 
 var app = builder.Build();
 

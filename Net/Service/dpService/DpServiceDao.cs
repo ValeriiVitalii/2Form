@@ -14,10 +14,10 @@ public class DpServiceDao : IDpService
         _db = dbContext;
     }
     
-    public void AddDp(Dp dp)
+    public async Task AddDp(Dp dp)
     {
         _db.Add(dp);
-        _db.SaveChanges();
+        await _db.SaveChangesAsync();
     }
 
     public List<Dp> GetAllDp()

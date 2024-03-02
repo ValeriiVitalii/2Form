@@ -9,7 +9,7 @@ namespace NetCore
         public MyDbContext(DbContextOptions<MyDbContext> options) : base(options)
         {
         }
-        
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -19,8 +19,20 @@ namespace NetCore
             }
         }
 
-        // DbSet для ваших моделей данных
+        // DbSet моделей данных
         public DbSet<Category> Categories { get; set; }
         public DbSet<Dp> Dp { get; set; }
+
+        public DbSet<Status> Status { get; set; }
+
+        
+        //Связь многие к многим
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Category>()
+                .HasMany(c => c.Statuses)
+                .WithMany(s => s.Categories)
+                .UsingEntity(j => j.ToTable("CategoryStatus"));
+        }
     }
 }

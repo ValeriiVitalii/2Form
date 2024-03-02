@@ -22,7 +22,7 @@ public class DpController : Controller
 
     public IActionResult Home()
     {
-        // Получение списка категорий из базы данных (замените этот код на вашу логику получения категорий)
+        // Получение списка категорий из базы данных
         var dps = _dpService.GetAllDp();
 
         // Передача списка категорий в ViewBag

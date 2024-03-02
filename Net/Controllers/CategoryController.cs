@@ -3,6 +3,7 @@ using _Net.Models;
 using _Net.Models.Dp;
 using _Net.Service.categoryService;
 using _Net.Service.dpService;
+using _Net.Service.statusService;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
 using NetCore;
@@ -18,21 +19,24 @@ public class CategoryController : Controller
     
     private readonly IDpService _dpService;
 
+    private readonly IStatusService _statusService;
+
     public CategoryController(ILogger<CategoryController> logger,
                                 MyDbContext dbContext, 
                                 ICategoryService categoryService,
-                                IDpService dpService)
+                                IDpService dpService,
+                                IStatusService statusService)
     {
         _logger = logger;
-        _categoryService = new CategoryServiceDao(dbContext);
         _categoryService = categoryService;
         _dpService = dpService;
+        _statusService = statusService;
     }
 
     
     public IActionResult Home()
     {
-        // Получение списка категорий из базы данных (замените этот код на вашу логику получения категорий)
+        // Получение списка категорий из базы данных 
         var categories = _categoryService.GetAllCategories();
 
         // Передача списка категорий в ViewBag
@@ -45,18 +49,18 @@ public class CategoryController : Controller
     public IActionResult CreateCategory() => View();
     
     [HttpPost]
-    public IActionResult CreateCategory(CreateCategoryAndDp categoryAndDp)
+    public async Task<IActionResult> CreateCategory(CreateCategoryAndDp categoryAndDp)
     {
         if (ModelState.IsValid)
         {
             // Адаптируем и сохраняем Category
             var category = categoryAndDp.Adapt<Category>();
-            _categoryService.AddCategory(category); // После выполнения этого метода, у category должен быть установлен корректный Id
+            await _categoryService.AddCategory(category); 
         
             // Адаптируем Dp и устанавливаем CategoryId
             var dp = categoryAndDp.Adapt<Dp>();
-            dp.CategoryId = category.Id; // Устанавливаем CategoryId для Dp с корректным Id из только что сохраненной Category
-            _dpService.AddDp(dp); // Сохраняем Dp
+            dp.CategoryId = category.Id;
+            await _dpService.AddDp(dp); // Сохраняем Dp
         
             return View("CategoryAndDpDetails", categoryAndDp);
         }

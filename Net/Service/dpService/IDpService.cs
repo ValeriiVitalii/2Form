@@ -4,7 +4,7 @@ namespace _Net.Service.dpService;
 
 public interface IDpService
 {
-    public void AddDp(Dp dp);
+    public Task AddDp(Dp dp);
 
     public List<Dp> GetAllDp();
 
