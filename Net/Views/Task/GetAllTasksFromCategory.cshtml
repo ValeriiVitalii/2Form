@@ -1,0 +1,92 @@
+@model IEnumerable<_Net.Models.task.Task>
+<!--
+<h2>Список задач</h2>
+
+
+<ul>
+    @foreach (var task in Model) // Перебираем задачи и отображаем их 
+    {
+        <li>
+            <strong>@task.Name</strong>
+            <span>(Статус: @task.Status.Name)</span>
+        </li>
+    }
+</ul>
+}
+-->
+<div style="text-align: center; margin-top: 20px;">
+    <a asp-controller="Task" asp-action="CreateTask" asp-route-categoryId="@ViewBag.CategoryId" method="get" class="btn btn-primary">Новая задача</a>
+    <button class="btn btn-primary" onclick="document.getElementById('myModal').style.display='block'">Найти по задачу по номеру</button>
+</div>
+
+@if (Model.Any())
+{
+    <div id="myModal" style="max-width: 800px; width: 90%; border-radius: 10px; background-color: rgba(255, 255, 255, 0.95); padding: 20px; margin: 20px auto;">
+        <div style="text-align: right;">
+            <span onclick="document.getElementById('myModal').style.display='none'" style="color: #aaaaaa; font-size: 24px; cursor: pointer;">&times;</span>
+        </div>
+        <div style="margin-top: 20px;">
+            <!-- Таблица с названиями всех категорий -->
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Номер</th>
+                    <th>Название</th>
+                    <th>Статус</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var task in Model)
+                {
+                    <tr>
+                        <td>@task.Id</td>
+                        <td>
+                            <div>
+                                @task.Name
+                                <span class="expand-icon" onclick="toggleExpandedInput('@task.Id')">▶️</span>
+                            </div>
+                            <div id="expandedInput-@task.Id" class="expanded-input" style="display: none;">
+                                <!-- Здесь можно добавить дополнительные элементы, такие как кнопки -->
+                                <button>Кнопка 1</button>
+                                <button>Кнопка 2</button>
+                            </div>
+                        </td>
+                        <td>@task.Status.Name</td>
+                    </tr>
+                }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+    var expandedTaskId = null; // Переменная для хранения ID раскрытой категории
+
+    function toggleExpandedInput(taskId) {
+        if (expandedTaskId && expandedTaskId !== taskId) {
+            var previouslyExpanded = document.getElementById('expandedInput-' + taskId);
+            if (previouslyExpanded) {
+                previouslyExpanded.style.display = 'none';
+            }
+        }
+
+        var expandedInput = document.getElementById('expandedInput-' + taskId);
+        if (expandedInput) {
+            if (expandedInput.style.display === 'none') {
+                expandedInput.style.display = 'block';
+                expandedTaskId = taskId; // Обновляем ID раскрытой категории
+            } else {
+                expandedInput.style.display = 'none';
+                if (expandedTaskId === taskId) {
+                    expandedTaskId = null; // Очищаем переменную, если текущая категория свернута
+                }
+            }
+        }
+    }
+</script>
+}
+else
+{
+    <p>В категории нет задач.</p>
+}  

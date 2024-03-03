@@ -36,12 +36,7 @@ public class CategoryController : Controller
     
     public IActionResult Home()
     {
-        // Получение списка категорий из базы данных 
-        var categories = _categoryService.GetAllCategories();
-
-        // Передача списка категорий в ViewBag
-        ViewBag.Categories = categories;
-        
+        ViewBag.Categories = _categoryService.GetAllCategories();
         return View();
     }
 

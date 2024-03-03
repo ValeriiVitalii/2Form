@@ -1,11 +1,14 @@
 using _Net.Models;
 using _Net.Models.Dp;
+using _Net.Models.task;
 using _Net.Service.categoryService;
 using _Net.Service.dpService;
 using _Net.Service.statusService;
+using _Net.Service.taskService;
 using Microsoft.EntityFrameworkCore;
 using NetCore;
 using Mapster;
+using Task = _Net.Models.task.Task;
 
 //Мапинг
 TypeAdapterConfig<CreateCategoryAndDp, Category>
@@ -17,6 +20,13 @@ TypeAdapterConfig<CreateCategoryAndDp, Dp>
     .NewConfig()
     .Map(dest => dest.Type, src => src.DpType)
     .Map(dest => dest.Name, src => src.DpName);
+
+TypeAdapterConfig<TaskViewDto, Task>
+    .NewConfig()
+    .Map(dest => dest.Name, src => src.Name)
+    .Map(dest => dest.DeadLine, src => src.DeadLine)
+    .Map(dest => dest.StatusId, src => src.StatusId)
+    .Map(dest => dest.CategoryId, src => src.CategoryId);
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,6 +42,7 @@ builder.Services.AddScoped<ICategoryService, CategoryServiceDao>();
 builder.Services.AddScoped<IDpService, DpServiceDao>();
 builder.Services.AddScoped<IStatusService, StatusServiceDao>();
 builder.Services.AddScoped<IStatusTransitionService, StatusTransitionServiceDao>();
+builder.Services.AddScoped<ITaskService, TaskServiceDao>();
 
 var app = builder.Build();
 
@@ -61,5 +72,9 @@ app.MapControllerRoute(
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Dp}/{action=Index}/{id?}");
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Task}/{action=GetAllTasksFromCategory}/{id?}");
 
 app.Run();

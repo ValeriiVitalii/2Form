@@ -22,7 +22,7 @@ public class CategoryServiceDao : ICategoryService
     
     public async Task AddCategory(Category category)
     {
-        category.Statuses = await _statusService.GetDefaultStatuses(); //Добавляем базовые статусы
+        category.Statuses = await _statusService.GetDefaultStatusesForCategory(); //Добавляем базовые статусы
         
         _db.Categories.Add(category);
         await _db.SaveChangesAsync();
@@ -35,7 +35,7 @@ public class CategoryServiceDao : ICategoryService
         return _db.Categories.Find(id);
     }
     
-    public List<Category> GetAllCategories()
+    public IEnumerable<Category> GetAllCategories()
     {
         return _db.Categories.ToList();
     }

@@ -1,3 +1,4 @@
+using System.Collections;
 using _Net.Models;
 
 namespace _Net.Service.categoryService;
@@ -8,7 +9,7 @@ public interface ICategoryService
 
     internal Category getCategory(int id);
 
-    internal List<Category> GetAllCategories();
+    internal IEnumerable<Category> GetAllCategories();
 
     internal void UpdateCategory(Category category);
     

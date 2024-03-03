@@ -1,0 +1,21 @@
+@model _Net.Models.task.TaskViewDto;
+
+<!DOCTYPE html>
+
+<form asp-controller="Task" asp-action="CreateTask" method="post">
+    <div class="grouped-fields">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div id="category" class="tab active">
+            <!-- Форма создания категории -->
+            <label asp-for="Name">Название</label>
+            <input asp-for="Name" class="form-control" style="width: 100%; padding: 5px;">
+            <label asp-for="DeadLine">Срок</label>
+            <input asp-for="DeadLine" class="form-control" style="width: 100%; padding: 5px;">
+            
+            <!-- Скрытые поля для CategoryId и StatusId -->
+            <input type="hidden" asp-for="CategoryId" />
+            <input type="hidden" asp-for="StatusId" />
+            <button type="submit" class="btn btn-primary">Создать</button>
+        </div>
+    </div>
+</form>

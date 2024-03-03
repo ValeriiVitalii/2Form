@@ -54,8 +54,10 @@
                            </div>
                            <div id="expandedInput-@category.Id" class="expanded-input" style="display: none;">
                                <!-- Здесь можно добавить дополнительные элементы, такие как кнопки -->
-                               <button>Кнопка 1</button>
-                               <button>Кнопка 2</button>
+                               <form asp-controller="Task" asp-action="GetAllTasksFromCategory" asp-route-id="@category.Id" method="get">
+                                   <button type="submit" class="btn btn-primary">Задачи</button>
+                               </form>
+                          <!--      <button>Кнопка 2</button> -->
                            </div>
                        </td>
                    </tr>

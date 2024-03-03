@@ -19,12 +19,18 @@ public class StatusServiceDao : IStatusService
         _db.SaveChanges();
     }
 
-    public async Task<List<Status>> GetDefaultStatuses()
+    public async Task<List<Status>> GetDefaultStatusesForCategory()
     {
-        var ids= new List<int>{1,2,3};
+        var ids = new List<int>{1,2,3};
         
         return await _db.Status
             .Where(s => ids.Contains(s.Id))
             .ToListAsync();
     }
+
+    public Status GetStatusById(int id)
+    {
+        return _db.Status.Find(id);
+    }
+
 }
