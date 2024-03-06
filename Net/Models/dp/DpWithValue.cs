@@ -1,36 +1,21 @@
-/*namespace test;
 
-public class DpWithValue(TypeDp type, String name) : DpWithoutValue(type, name)
+
+using _Net.Models.Dp;
+using Task = _Net.Models.task.Task;
+
+public class DpWithValue
 {
-    private int _id;
-
-    private object _value;
-
-    private int _taskId;
-
-    private bool _fill;
+    public int Id { get; set; }
     
-    public int Id
-    {
-        get => _id;
-        set => _id = value;
-    }
+    public TypeDp Type { get; set; }
+    
+    public string Name { get; set; }
+    
+    public byte[] Value { get; set; }
 
-    public object Value
-    {
-        get => _value;
-        set => _value = value ?? throw new ArgumentNullException(nameof(value));
-    }
+    public int TaskId { get; set; }
+    
+    public Task Task { get; set; }
 
-    public int TaskId
-    {
-        get => _taskId;
-        set => _taskId = value;
-    }
-
-    public bool Fill
-    {
-        get => _fill;
-        set => _fill = value;
-    }
-}*/
+    public bool Fill { get; set; }
+}

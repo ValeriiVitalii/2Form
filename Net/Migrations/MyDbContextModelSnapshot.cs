@@ -37,6 +37,38 @@ namespace _2FormNew.Migrations
                     b.ToTable("CategoryStatus", (string)null);
                 });
 
+            modelBuilder.Entity("DpWithValue", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("Fill")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("TaskId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("integer");
+
+                    b.Property<byte[]>("Value")
+                        .IsRequired()
+                        .HasColumnType("bytea");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TaskId");
+
+                    b.ToTable("DpWithValues");
+                });
+
             modelBuilder.Entity("StatusTransition", b =>
                 {
                     b.Property<int>("Id")
@@ -176,6 +208,17 @@ namespace _2FormNew.Migrations
                         .HasForeignKey("StatusesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("DpWithValue", b =>
+                {
+                    b.HasOne("_Net.Models.task.Task", "Task")
+                        .WithMany()
+                        .HasForeignKey("TaskId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Task");
                 });
 
             modelBuilder.Entity("StatusTransition", b =>

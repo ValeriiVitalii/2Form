@@ -28,6 +28,7 @@ namespace NetCore
         public DbSet<StatusTransition> StatusTransitions { get; set; }
         public DbSet<Task> Tasks { get; set; }
 
+        public DbSet<DpWithValue> DpWithValues { get; set; }
         
         //Связь многие к многим
         protected override void OnModelCreating(ModelBuilder modelBuilder)
